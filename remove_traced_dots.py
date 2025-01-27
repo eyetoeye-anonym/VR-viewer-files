@@ -10,8 +10,15 @@ def remove_traced_dots(root):
             os.rename(f'{root}/' + folder, f'{root}/' + new_folder)
             print('Renamed ' + folder + ' to ' + new_folder)
 
-root = 'pairs-SM-full-blended-reflective-benchmark'
-remove_traced_dots(root)
+def remove_traced_dots_file(root):
+    for file in os.listdir(root):
+        if file.endswith('..png'):
+            new_file = file.replace('..png', '.png')
+            os.rename(f'{root}/' + file, f'{root}/' + new_file)
+            print('Renamed ' + file + ' to ' + new_file)
+
+root = 'pairs-SM-full-blended-reflective-benchmark/images'
+remove_traced_dots_file(root)
 # root = './pairs-user-study-webm/right'
 # remove_traced_dots(root)
 
